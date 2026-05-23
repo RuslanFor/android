@@ -1,20 +1,30 @@
 package com.example.myapplication
 
+import android.content.Intent
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 
 class MainActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_main)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+
+        val buttonTask1 = findViewById<Button>(R.id.buttonTask1)
+        val buttonTask2 = findViewById<Button>(R.id.buttonTask2)
+        val buttonTask3 = findViewById<Button>(R.id.buttonTask3)
+
+        buttonTask1.setOnClickListener {
+            startActivity(Intent(this, CopyActivity::class.java))
+        }
+
+        buttonTask2.setOnClickListener {
+            startActivity(Intent(this, ButtonsActivity::class.java))
+        }
+
+        buttonTask3.setOnClickListener {
+            startActivity(Intent(this, CalculatorActivity::class.java))
         }
     }
 }
